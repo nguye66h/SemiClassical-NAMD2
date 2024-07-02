@@ -16,9 +16,14 @@ sys.path.append(os.popen("pwd").read().replace("\n","")+"/Method")
 sys.path.append(os.popen("pwd").read().replace("\n","")+"/Model")
 
 
+try:
+    fold = sys.argv[2]
+except:
+    fold = "./output"
+    
 #-------------------------
 try:
-    inputtxt = open(sys.argv[1], 'r').readlines()
+    inputtxt = open(f"{fold}/{sys.argv[1]}", 'r').readlines()
     print(f"Reading {sys.argv[1]}")
 except:
     print("Reading input.txt")
@@ -45,11 +50,6 @@ import time
 import numpy as np
 
 t0 = time.time()
-
-try:
-    fold = sys.argv[2]
-except:
-    fold = "./output"
 
 
 os.system(f"mkdir -p {fold}")

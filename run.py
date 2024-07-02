@@ -34,6 +34,7 @@ os.system(f"mkdir -p {fold}")
 if system == "slurm" or system == "htcondor":
     print (f"Running jobs in a {system}")
     model = getInput(input,"Model")
+    method = getInput(input,"Method")
     exec(f"from {model} import parameters")
     ntraj = parameters.NTraj 
 
@@ -50,6 +51,10 @@ if system == "slurm" or system == "htcondor":
         print(f"Overriding parameters: {p.split('=')[0].split('$')[1]} = {p.split('=')[1].split('#')[0]}")
     print("-"*50)
     
+    os.system(f"cp Model/{model}.py {fold}")
+    os.system(f"cp Method/{method}.py {fold}")
+    os.system(f"cp input.txt {fold}")
+
     if system == "slurm":
         for i in range(ncpus):
             os.system(f"sbatch serial.py {inputfile} {fold} {i}")
