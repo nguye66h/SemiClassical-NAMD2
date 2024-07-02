@@ -27,16 +27,11 @@ class Bunch:
 
 def initElectronic(Nstates, initState, Hij, k):
     
-    # while(True):
-    #     x = np.random.normal(size=Nstates)
-    #     y = np.random.normal(size=Nstates)
-    #     if (np.argmax(x**2 + y**2) == initState):
-    #         np.savetxt('x.txt', x)
-    #         np.savetxt('y.txt', y)
-    #         break
-
-    x = np.loadtxt('x.txt')
-    y = np.loadtxt('y.txt')
+    while(True):
+        x = np.random.normal(size=Nstates)
+        y = np.random.normal(size=Nstates)
+        if (np.argmax(x**2 + y**2) == initState):
+            break
 
     norm = np.sqrt(np.sum(x**2 + y**2))
     ck = (x+1j*y)/norm

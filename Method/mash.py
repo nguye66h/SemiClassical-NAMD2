@@ -29,14 +29,11 @@ def initElectronic(Nstates, initState, Hij):
 
     k = np.arange(0,2*np.pi,2*np.pi/(Nstates))
     
-    # while(True):
-    #     x = np.random.normal(size=Nstates)
-    #     y = np.random.normal(size=Nstates)
-    #     if (np.argmax(x**2 + y**2) == initState):
-    #         break
-
-    x = np.loadtxt('x.txt')
-    y = np.loadtxt('y.txt')
+    while(True):
+        x = np.random.normal(size=Nstates)
+        y = np.random.normal(size=Nstates)
+        if (np.argmax(x**2 + y**2) == initState):
+            break
 
     norm = np.sqrt(np.sum(x**2 + y**2))
     ck = (x+1j*y)/norm
